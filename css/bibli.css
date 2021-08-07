@@ -1,0 +1,95 @@
+.biblios {
+  font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+  list-style-position: outside;
+  font-size: 100%;
+  text-align: justify;
+}
+
+.section {
+  display: block;
+  background-color:#FFFFFF;
+  padding:0.8em;
+  padding-top:0.3em;
+  margin:1em;
+}
+
+.section_title {
+  display: inline;
+  font-size: 110%;
+  font-weight:bold;
+  color: #FF7F00;
+}
+
+.article {
+  display: inline;
+  font-size: 100%;
+  margin:1em;
+  margin-left:1.5em;
+  display: list-item;
+  text-align: justify;
+}
+
+.article_titre {
+  display: inline;
+  color: #009265;
+}
+.article_titre:after {
+  display: inline;
+  content: " - ";
+}
+
+.article_auteur {
+  display: inline;
+  color: #5C6B99;
+}
+
+.article_abstract {display:none;}
+  
+.article_date {
+  display: inline;
+  color:#62506B;
+  margin-left:0.5em;
+}
+
+.article_revueconf {
+  display: inline;
+  font-size: 100%;
+  font-style: oblique;
+  margin-left:0.5em;
+}
+
+.article_volume {
+  display: inline;
+  margin-left:0.5em;
+}
+
+.article_pages{
+  margin-left:0.5em;
+}
+
+.article_publieur {
+  display:none;
+}
+
+.article_url A {
+  text-decoration: underline;
+  color: #1b1763;
+  margin-left:0.5em;
+}
+.article_url A:hover {
+  text-decoration: underline overline;
+}
+.article_bibtexEntry{
+    margin-left:0.5em;
+}
+
+.article_serie { display:none;}
+.article_editeur { display:none;}
+.article_notoriete { display:none;}
+.article_langue { display:none;}
+.article_labo { display:none;}
+.article_equipe { display:none;}
+.article_type {display:none;}
+.article_refBibTeX {display:none;}
+
+
