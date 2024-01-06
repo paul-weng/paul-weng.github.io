@@ -99,7 +99,7 @@ iframe[seamless] {
 }
 
 .pw-header {    
-    min-height:160px; 
+    min-height:100px; 
     background-color:#FFFFFF;
 }
 
@@ -109,7 +109,7 @@ iframe[seamless] {
 }
 
 .pw-header-block-center {
-    height:160px; 
+    height:100px; 
     width:400px;
 }
 
