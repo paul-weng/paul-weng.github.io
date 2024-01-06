@@ -108,6 +108,15 @@ iframe[seamless] {
     width:300px;
 }
 
+.pw-header-block img {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
 .pw-header-block-center {
     height:100px; 
     width:400px;
