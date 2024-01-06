@@ -108,7 +108,12 @@ iframe[seamless] {
     width:300px;
 }
 
-.pw-header-block img {
+.pw-header-block-r {
+    height:100px; 
+    width:300px;
+}
+
+.pw-header-block-r img {
   width: 100px;
   height: 100px;
   position: absolute;
