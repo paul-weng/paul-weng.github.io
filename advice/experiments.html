@@ -18,6 +18,10 @@ Here are some tips when running deep RL experiments:
 
 - Write scripts for your experiments so that your experiments can be easily repeated
 
+- Your script should write in /tmp (which is always local). The files can be moved after the script ends.
+
+- Regarularly save the state of your experiments so that they can restarted (e.g., after a crash) or resumed (e.g., if we want to train longer)
+
 - Use different folders for each experiment, possibly add a README to explain why this experiment is performed
 
 - Since DRL experiments may take a long time, try to think carefully if you really need to perform some experiments, or if their results could be deduced from other experiments
