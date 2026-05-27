@@ -1,0 +1,127 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>Marked in the browser</title>
+</head>
+<body>
+  <div id="content"></div>
+  <script src="https://cdn.jsdelivr.net/npm/marked/lib/marked.umd.js"></script>
+  <script>
+    document.getElementById('content').innerHTML =
+      marked.parse(`
+# Tips for performing experiments in deep RL
+
+Here are some tips when running deep RL experiments:
+
+- Try to automate your experiments
+
+- Write scripts for your experiments so that your experiments can be easily repeated
+
+- Use different folders for each experiment, possibly add a README to explain why this experiment is performed
+
+- Since DRL experiments may take a long time, try to think carefully if you really need to perform some experiments, or if their results could be deduced from other experiments
+
+- Here are some code snippets that can be helpful for plotting
+
+${'```'}python
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+from pylab import figure
+from pylab import rcParams
+import glob
+import os
+from pathlib import Path
+import configparser
+${'```'}
+
+After you import all the libraries, now adapt these two methods
+
+${'```'}python
+  def plot_data2(data_matrix, ax, lcolor, lline, p, lmarker=''):
+    plot_only_each_n_point=100
+    data_matrix=data_matrix.reshape((int(data_matrix.shape[0]*plot_only_each_n_point),
+                            int(data_matrix.shape[1]/plot_only_each_n_point)), order='F')
+    x = np.arange(0, data_matrix.shape[1])
+    x2= np.arange(0, data_matrix.shape[1])*p*plot_only_each_n_point
+    lx = np.arange(0, data_matrix.shape[1], 1)
+    lx2 = np.arange(0, data_matrix.shape[1])*p*plot_only_each_n_point
+    ymean = np.mean(data_matrix, axis=0)
+    ys=data_matrix
+    ystd = np.std(ys, axis=0)
+    ystderr = ystd / np.sqrt(len(ys))
+    ax.fill_between(lx2*p, ymean - ystderr, ymean + ystderr, color=lcolor, alpha=.4)
+    ax.fill_between(lx2*p, ymean - ystd,    ymean + ystd,    color=lcolor, alpha=.2)
+    ax.plot(lx2*p, ymean[lx], linewidth=2, linestyle=lline, color=lcolor,
+            marker=lmarker, markevery=1000, markersize=4.5)
+${'```'}
+
+And the second method where you need set how many episodes you want to plot
+
+${'```'}python
+  def plot_from_file(path, fig, subplot, color, sign):
+    results2 = []
+    for directory in glob.iglob(path+'**/results/', recursive=True):
+        print(directory)
+        results = []
+        for index in range(1,20):
+            for filename in glob.iglob(directory+'**_run'+str(index)+'.csv', recursive=False):
+                subresults = pd.read_csv(filename,  compression='gzip', sep=",")
+                subresults = subresults['Reward']
+                results.append(subresults)
+        results = np.array(results)
+        results = results.reshape(results.shape[0]*results.shape[1])        
+        results2.append(results)
+ 
+    results2 = np.array(results2)
+    ax=fig.add_subplot(subplot)
+    plot_data2(results2, ax, color, sign, 1)
+    return ax
+${'```'}
+
+Now define your path:
+
+${'```'}python
+path_local = "YOUR_PATH"
+fig = figure()
+ax=plot_from_file(path_local + "YOUR_EXPERIMENTAL_DATA" +'**', fig, 111, 'orange', '-.') ax=plot_from_file(path_local + "YOUR_EXPERIMENTAL_DATA" +'**', fig, 111, 'brown', '--')
+ax.set_xlabel("Number of Steps")
+ax.set_ylabel("Average Rewards")
+ax.legend(["DQN", "PPO"], ncol=3, handleheight=2.0, labelspacing=0.05, loc='upper center')
+plt.savefig('curves.png')
+${'```'}
+
+To evaluate, you can use the below script to compute the mean/variance of your results.
+
+${'```'}python
+  def plot_from_file(path, fig, subplot, color, sign):
+    results2 = []
+    for directory in glob.iglob(path+'**/results/', recursive=True):
+        print(directory)
+        results = []
+        for index in range(31, 40):
+            for filename in glob.iglob(directory+'**_run'+str(index)+'.csv', recursive=False):
+                subresults = pd.read_csv(filename, compression='gzip', sep=",")
+                subresults = [subresults['Reward'], subresults['Balance']]
+ 
+                results.append(np.array(subresults).transpose())
+ 
+        results = np.array(results)
+        results = results.mean(axis=1).mean(axis=0)
+        results2.append(results)
+ 
+    results2 = np.array(results2)
+    reward = results2[0]
+    Balance = results2[1]
+    print('Reward  and balance of my transaction is', np.mean(reward), np.mean(Balance))
+    return np.array([reward, Balance]).transpose()
+${'```'}
+
+- [Advice about RL experimentations](https://www.benerl.org/seminar-series/advice-on-experimentation)
+
+- [Practical tips](https://www.reddit.com/r/reinforcementlearning/comments/7s8px9/deep_reinforcement_learning_practical_tips/) 
+`);
+  </script>
+</body>
+</html>

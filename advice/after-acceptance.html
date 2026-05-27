@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>Marked in the browser</title>
+</head>
+<body>
+  <div id="content"></div>
+  <script src="https://cdn.jsdelivr.net/npm/marked/lib/marked.umd.js"></script>
+  <script>
+    document.getElementById('content').innerHTML =
+      marked.parse(`
+Congratulations for the acceptance of your paper!
+
+Go through this list after a paper is accepted.
+
+For the code, prepare a public repository on our github repository:
+
+- Clean code, possibly add some comments
+- Prepare scripts to help reproduce our experimental results
+- Attention: all the hyperparameter values should be shared
+- Write a README to explain how to use the code
+
+For the final version:
+
+- Try to take into account the suggestions from reviewers (within reason)
+- Make any other necessary modifications (e.g., correct some typos, add some citations)
+- Add an acknowledgement to funding and possibly thank the anonymous reviewers if their reviews really help improve the paper
+- Add a link to the public repository
+- Submit to arXiv
+
+For the conference/workshop attendance:
+
+- Apply to DKU/DNAS for financial support
+- Check if the venue proposes some financial support to students (e.g., UAI has funding for students)
+- Possibly, apply as a volunteer
+
+Finally, consider submitting to the workshops collocated to the conference/workshop 
+`);
+  </script>
+</body>
+</html>

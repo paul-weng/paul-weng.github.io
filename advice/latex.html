@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>Marked in the browser</title>
+</head>
+<body>
+  <div id="content"></div>
+  <script src="https://cdn.jsdelivr.net/npm/marked/lib/marked.umd.js"></script>
+  <script>
+    document.getElementById('content').innerHTML =
+      marked.parse(`
+#Best practice for LaTeX
+
+- The latex file is like any source code file. It should be as legible as possible. To simplify editing, I notably recommend to write one sentence per line. Of course, a sentence could be further broken down for better legibility (e.g., it contains a list of elements).
+
+- When using labels, precede their names by their types (e.g., sec:intro for a section, fig:plot for a figure, eq:bellman for an equation...)
+
+- For (especially conference) papers, any floats (e.g., figures, tables...) should be preferably put on top.
+
+- Use the *equation* environment for one-line equation and the *align* environment (needs to import the amsmath package) for multi-line equations. 
+Avoid using "$$" (not "$" which is useful for inline math) which comes from TeX.
+
+- Use the *booktabs* package for table (e.g., *tabular* with *toprule*, *midrule*, and *bottomrule*). See also this [post](https://nhigham.com/2019/11/19/better-latex-tables-with-booktabs/) for instance.
+
+- Use the *hyperref* package to make the references and links clickable in the final pdf.
+
+- Use the *cleveref* package for references (e.g., \cref{label} or \Cref{label} instead of Figure~\ref{label}). Note this package should be imported after the hyperref one.
+
+- Don't type author's names yourself in citations. Use for instance natbib and \citet.
+
+- For bold font faces in math mode, use \bm from the bm packages.
+
+- Follow the following conventions in notations (except if you have good reasons not to)
+
+    - \mathcal X for sets
+    - \bm x for vectors
+    - \bm X for matrices
+    - \Delta(\mathcal X) for the set of probability distributions over finite set \mathcal X
+
+`);
+  </script>
+</body>
+</html>

@@ -9,7 +9,17 @@
   <script src="https://cdn.jsdelivr.net/npm/marked/lib/marked.umd.js"></script>
   <script>
     document.getElementById('content').innerHTML =
-      marked.parse('# Marked in the browser\n\nRendered by **marked**.');
+      marked.parse(`
+Here are some pieces of advice on various topics:
+
+- [Learning about (deep) RL](rl.html)
+- [Reading a paper](reading.html)
+- [Conducting experiments](experimenta.html)
+- [Writing a paper](writing.html)
+- [Best pratices for LaTeX](latex.html)
+- [Checklist before a paper submission](before-submission.html)
+- [Checklist after a paper acceptance](after-acceptance.html)
+`);
   </script>
 </body>
 </html>

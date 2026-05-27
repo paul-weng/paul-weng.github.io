@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>Marked in the browser</title>
+</head>
+<body>
+  <div id="content"></div>
+  <script src="https://cdn.jsdelivr.net/npm/marked/lib/marked.umd.js"></script>
+  <script>
+    document.getElementById('content').innerHTML =
+      marked.parse(`
+Here are some pieces of advice (in no particular order) when you start writing a paper:
+
+- Separate clearly the mathematical model and the approximation made for the algorithm
+
+- Credit properly any previous result/equation/idea
+
+- Separate clearly your contributions and previous existing work
+
+- Use a spellchecker
+
+- Don't start a sentence with a mathematical symbol.
+
+- In the latex document, define macros for your notations so that they can be changed easily later on if needed. Here are some examples for defining macros:
+
+${'```'}latex
+\newcommand{\St}{ {\mathcal S} } % macro to denote a set of states
+
+\newcommand{\pw}[1]{ {\color{orange} #1} } % macro with an argument
+${'```'}
+
+- A latex document is a source code. So it should be well-organized and legible. I suggest the following conventions in the latex file:
+	- Write a maximum of one sentence by per line
+	- Possibly break the sentence into several lines
+
+- A typical paper has the following structure:
+	1. Abstract
+        1. Introduction
+        1. Related Work
+        1. Background
+        1. Problem statement
+        1. Contributions (theoretical analysis, algorithm)
+        1. Experimental results
+        1. Conclusion
+`);
+  </script>
+</body>
+</html>

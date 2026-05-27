@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>Marked in the browser</title>
+</head>
+<body>
+  <div id="content"></div>
+  <script src="https://cdn.jsdelivr.net/npm/marked/lib/marked.umd.js"></script>
+  <script>
+    document.getElementById('content').innerHTML =
+      marked.parse(`
+Go through this checklist before submitting a paper or a thesis:
+
+- Check the errors and warnings of latex compilation
+	- Try to address all errors/warnings (e.g., overflow, underflow)
+
+- Use spellchecker to remove any potential typos
+	- Note that you can add new words in your spellchecker
+	- Note that the spellchecker may not find all grammar errors, for example, words like “work” are uncountable but has other countable meanings.
+
+- Go through the references to make them consistent
+	- Ideally, we should cite published papers instead of their arXiv versions
+	- The conferences should ideally be in full name
+	- Add pages when relevant
+	- Add volume/number for journal papers
+
+- A reference in a text should ideally not be part of the text, e.g.,
+	- "Smith et al. (2021) proposed..." instead of "(Smith et al., 2021) proposed...", or
+	- "Smith et al. [1] proposed..." instead of "[1] proposed..."
+	- You can use \citet for the names of the authors. Otherwise use \citep.
+
+- Check the overall formatting of the paper
+	- Check that there is no page that ends with the title of a section (or just with one line)
+	- Check that there is no suspicious white spaces. Forexample, after align, use % to avoid the extra space.
+
+- Check the punctuation marks after equations in display style
+	- If an equation is followed by “where”, there should not be an indentation before the “where”
+
+- Check that all notations are defined the first time they are used
+
+- Check that all acronyms are defined the first time they are used
+
+- Avoid starting sentences with a mathematical notation
+
+- "i.e." and "e.g." should be followed by a comma
+
+- After \begin{enumerate}, keep consistent whether to captalize
+
+- If you use \textit{} for terms such as MDP, keep doing it everywhere
+
+- Revise choppy sentences, sentences which are too long, or paragraphs with only few sentences (normally less than 3 or 4).
+
+-  Use ${'``'}xxx'' in latex for "xxx"
+`);
+  </script>
+</body>
+</html>

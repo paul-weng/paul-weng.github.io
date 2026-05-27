@@ -6,7 +6,7 @@
 </head>
 <body>
   <div id="content"></div>
-  <script src="https://cdn.jsdelivr.net/npm/marked/lib/marked.umd.js"></script>
+  <script src="../js/marked.umd.js"></script>
   <script>
     document.getElementById('content').innerHTML =
       marked.parse(`
@@ -16,23 +16,90 @@ Here are some resources about (deep) RL.
 A good starting point could be OpenAI's resource, reading Sutton & Barto's book, and/or watching one of the video lectures. 
 
 - [OpenAI's resource to learn deep RL](https://spinningup.openai.com/en/latest/)
+
 - RL books
 	- [Sutton and Barto's classic book about RL](http://incompleteideas.net/book/the-book-2nd.html)
+	- [Szepesvari's book on algorithms for RL](https://sites.ualberta.ca/~szepesva/papers/RLAlgsInMDPs-lecture.pdf)
+	- [Lattimore & Szepesvari's book on multi-armed bandits and RL (theoretical book)](https://tor-lattimore.com/downloads/book/book.pdf)
+
+- Some other books not available online:
+	-  Puterman, Markov decision processes: discrete stochastic dynamic programming, Wiley, 1994
+	- Bertsekas, Dynamic programming and optimal control, Vol I (2017) & Vol II (2012), Athena Scientific
+	- Bertsekas and Tsitsiklis, Neuro-Dynamic Programming, Athena Scientific, 1996 
+
+- Video lectures:
+	- [David Silver](https://davidstarsilver.wordpress.com/teaching/): Mostly based on the first edition of Sutton & Barto's book
+	- [Deep RL course](http://rll.berkeley.edu/deeprlcourse/) from Berkeley
+	- [Another one](https://sites.google.com/view/deep-rl-bootcamp/lectures)
+	- [Still another one](https://shiyuzhao.westlake.edu.cn/Teaching.htm) from Westlake University (in English or Chinese))
 
 
-# Deep RL algoirthms
+# Deep RL algorithms
+
+The standard deep RL algorithms are:
+
+- DQN: value-based, off-policy, restricted to small number of actions
+
+- PPO: gradient policy-based, stochastic policy, suitable for continuous actions
+
+- TD3, improvement over DDPG: gradient policy-based, off-policy, deterministic policy, suitable continuous actions
+
+- SAC: gradient policy-based, stochastic policy, suitable for continuous actions, more robust?
+
+Check also this [page](https://lilianweng.github.io/posts/2018-04-08-policy-gradient/) for many other policy gradient based algorithms.
 
 
-# Techniques for faster RL methods
+# Techniques for faster RL training
+
+Possible techniques to obtain algorithms more efficient in terms of sample complexity or computational complexity:
+
+- Exploit mathematical results
+	- More efficient optimization algorithms
+	- Variance reduction
+
+- Improve RL algorithm mechanism
+	- Better exploration
+	- Better memory replay
+
+- Exploit a priori knowledge of sequential decision-making problem
+	- Exploit problem structure
+		- State aggregation
+		- Structured MDP
+		- Hierarchical approach
+		- First-order RL
+		- Other decomposition
+	- Exploit property of reward function
+		- Threshold policy
+
+- Reuse previous learning
+	- Transfer learning
+	- Curriculum learning
+	- Lifelong learning
+	- Developmental learning
+	- Multi-task learning
+
+- Train with expert
+	- Behavior cloning
+	- Imitation learning
+	- Learning from demonstration
+	- Interactive learning
 
 
-# Code about RL
+# Code about deep RL
+
+Here are some useful repositories:
+
+- [Gym environment](https://gymnasium.farama.org/index.html) defines an interface (for an RL environment) and provides many environments on which deep RL algorithms can be run on
+
+- [Stable baselines](https://github.com/DLR-RM/stable-baselines3/tree/master) provides well-tested deep RL algorithm implementation
 
 
 # Tips for performing experiments in deep RL
 
+Here are some tips when running deep RL experiments:
 
-# RL Applications
+- [Advice about RL experimentations](https://www.benerl.org/seminar-series/advice-on-experimentation)
+- [Practical tips](https://www.reddit.com/r/reinforcementlearning/comments/7s8px9/deep_reinforcement_learning_practical_tips/) 
 
 
 `);

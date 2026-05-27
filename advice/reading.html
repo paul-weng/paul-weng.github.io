@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>Marked in the browser</title>
+</head>
+<body>
+  <div id="content"></div>
+  <script src="https://cdn.jsdelivr.net/npm/marked/lib/marked.umd.js"></script>
+  <script>
+    document.getElementById('content').innerHTML =
+      marked.parse(`
+#Questions to ask yourself when you read a paper or attend a talk:
+
+- What is the problem that is solved in the paper?
+
+- Why is it important?
+
+- Is the problem related to any other problems you know?
+
+- How do the authors solve it?
+
+- Why does it work?
+
+- Are there some implicit assumptions? Could we relax them?
+
+- Is there any alternative approach that could have been used?
+
+- Do the experimental results really show that the approach works?
+
+- Are they convincing?
+
+- Do we see any strange phenomenon? 
+
+`);
+  </script>
+</body>
+</html>
