@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>Marked in the browser</title>
+</head>
+<body>
+  <div id="content"></div>
+  <script src="https://cdn.jsdelivr.net/npm/marked/lib/marked.umd.js"></script>
+  <script>
+    document.getElementById('content').innerHTML =
+      marked.parse(`
+Compute resources available in the team:
+
+- GPU server (10.200.13.124)
+   - CPU: 2 x Intel(R) Xeon(R) Platinum 8352V CPU @ 2.10GHz (each 36 cores)
+   - RAM: 263723552 kB (256GB)
+   - GPU: 8 x Nvidia RTX 4090 (24GB)
+   - HD:
+      - 879GB for /
+      - 44T for /mnt/sda
+      - 15T for /mnt/nas (shared)
+- Xin's desktop (10.200.20.143), also NIS server
+   - 13th Gen Intel(R) Core(TM) i9-13900K (24 cores)
+   - RAM: 32541520 kB (32GB)
+   - GPU: NVIDIA GeForce RTX 4060 Ti (16GB)
+   - HD:
+      - 456GB for /
+      - 15T for /mnt/nas (shared)
+- Ramzi's desktop (10.200.20.229)
+   - CPU: Intel(R) Xeon(R) Platinum 8488C (48 cores)
+   - RAM: 296362812 kB (292GB?)
+   - GPU: NVIDIA RTX 5880 Ada (48 GB)
+   - HD:
+      - 1.8T for /
+      - 7.3T for /mnt/sda
+      - 15T for /mnt/nas (shared)
+`);
+  </script>
+</body>
+</html>
